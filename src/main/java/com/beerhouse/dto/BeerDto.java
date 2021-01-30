@@ -14,14 +14,21 @@ public class BeerDto {
 
 	private Long id;
 	
+	@NotNull(message = "Campo name é obrigatório.")
+	@Size(max = 50, message = "Tamanho maximo excedido")
 	private String name;
 	
+	@Size(max = 100, message = "Tamanho máximo excedido")
 	private String ingredients;
 	
+	@Size(max = 50, message = "Tamanho máximo excedido")
 	private String alcoholContent;
-
+	
+	@NotNull(message = "Campo price é Obrigatório")
+	@DecimalMin(value = "0")
 	private BigDecimal price; 
 	
+	@NotNull(message = "Campo category é obrigatório.")
 	private String category;
 	
 	public BeerDto(Beer beer) {
