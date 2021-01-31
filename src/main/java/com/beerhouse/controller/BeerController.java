@@ -1,11 +1,13 @@
 package com.beerhouse.controller;
 
+import java.net.URI;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.beerhouse.dto.BeerDto;
 import com.beerhouse.service.BeerService;
@@ -32,9 +36,10 @@ public class BeerController {
 	}
 	
 	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public void createBeer(@RequestBody @Valid BeerDto beerDto) {
-		this.beerService.createBeer(beerDto);
+	public ResponseEntity<BeerDto> createBeer(@RequestBody @Valid BeerDto beerDto, UriComponentsBuilder uriComponentBuilder) {
+		 BeerDto beerCreatedDto = this.beerService.createBeer(beerDto);
+		 URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path(beerCreatedDto.getIdToString()).build().toUri();
+		 return ResponseEntity.created(uri).body(beerCreatedDto);
 	} 
 	
 	@GetMapping

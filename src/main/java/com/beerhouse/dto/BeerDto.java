@@ -60,6 +60,10 @@ public class BeerDto {
 	public Long getId() {
 		return id;
 	}
+	
+	public String getIdToString() {
+		return id.toString();
+	}
 
 	public void setId(Long id) {
 		this.id = id;

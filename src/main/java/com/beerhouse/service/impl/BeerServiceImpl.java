@@ -25,9 +25,9 @@ public class BeerServiceImpl implements BeerService{
 	}
 
 	@Override
-	public void createBeer(BeerDto beerDto) {
+	public BeerDto createBeer(BeerDto beerDto) {
 		Beer beer = beerDto.convertToEntity();
-	    this.saveBeer(beer);
+		return BeerDto.convertToDto(this.saveBeer(beer));
 	}
 
 	@Override
@@ -70,8 +70,8 @@ public class BeerServiceImpl implements BeerService{
 	}
 	
 	@Transactional
-	private void saveBeer(Beer beer) {
-		 beerRepository.save(beer);
+	private Beer saveBeer(Beer beer) {
+		return beerRepository.save(beer);
 	}
 	
 	@Transactional

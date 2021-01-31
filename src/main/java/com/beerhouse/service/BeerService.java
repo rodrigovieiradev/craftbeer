@@ -6,7 +6,7 @@ import com.beerhouse.dto.BeerDto;
 
 public interface BeerService {
 
-	void createBeer(BeerDto beerDto);
+	BeerDto createBeer(BeerDto beerDto);
 
 	List<BeerDto> getAllBeer();
 
