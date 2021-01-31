@@ -57,14 +57,15 @@ public class BeerController {
 	@PutMapping("/{beerId}")
 	@ResponseStatus(HttpStatus.OK)
 	public BeerDto updateBeerComplete(@PathVariable Long beerId, 
-			                         @RequestBody @Valid BeerDto beerDto) {
+			                          @RequestBody @Valid BeerDto beerDto) {
 		return this.beerService.updateBeerComplete(beerId, beerDto);
 	}
 	
 	@PatchMapping("/{beerId}")
 	@ResponseStatus(HttpStatus.OK)
-	public BeerDto alterBeer(@PathVariable Long beerId) {
-		return this.beerService.alterBeer(beerId);
+	public BeerDto alterBeer(@PathVariable Long beerId,
+			                 @RequestBody @Valid BeerDto beerDto) {
+		return this.beerService.alterBeer(beerId, beerDto);
 	} 
 	
 	@DeleteMapping("/{beerId}")

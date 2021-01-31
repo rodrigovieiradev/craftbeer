@@ -54,8 +54,10 @@ public class BeerServiceImpl implements BeerService{
 	}
 
 	@Override
-	public BeerDto alterBeer(Long beerId) {
-		return null;
+	public BeerDto alterBeer(Long beerId, BeerDto beerDto) {
+		 Beer beer = this.finById(beerId).orElseThrow(() -> new NotFoundException("Beer not found"));
+		 beer.setBeerValues(beerDto.convertToEntity());
+		 return BeerDto.convertToDto(this.saveBeer(beer));
 	}
 
 	@Override

@@ -14,7 +14,7 @@ public interface BeerService {
 
 	BeerDto updateBeerComplete(Long beerId, BeerDto beerDto);
 
-	BeerDto alterBeer(Long beerId);
+	BeerDto alterBeer(Long beerId, BeerDto beerDto);
 
 	void deleteBeer(Long beerId);
 
