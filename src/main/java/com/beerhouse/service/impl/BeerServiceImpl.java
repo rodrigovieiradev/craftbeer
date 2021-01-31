@@ -43,10 +43,14 @@ public class BeerServiceImpl implements BeerService{
 
 	@Override
 	public BeerDto updateBeerComplete(Long beerId, BeerDto beerDto) {
-		 this.finById(beerId).orElseThrow(() -> new NotFoundException("Beer not found"));
-		 beerDto.setId(beerId);
-		 this.saveBeer(beerDto.convertToEntity());
-		 return beerDto;
+		 Optional<Beer> beerOptional = this.finById(beerId);
+		 if(beerOptional.isPresent()) {
+			Beer beer = beerOptional.get();
+			beer.setBeerValues(beerDto.convertToEntity());
+			return BeerDto.convertToDto(this.saveBeer(beer));	 
+		 }else {
+			 return this.createBeer(beerDto); 
+		 } 
 	}
 
 	@Override

@@ -3,7 +3,6 @@ package com.beerhouse.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -109,7 +108,18 @@ public class Beer implements Serializable   {
 		this.registrationDate = registrationDate;
 	}
 	
-
+	public void setBeerValues(Beer beer) {
+		this.name = (String) this.verifyFields(beer.name, this.name);
+		this.ingredients = (String) verifyFields(beer.ingredients, this.ingredients);
+		this.price = (BigDecimal) this.verifyFields(beer.price, this.price);
+		this.category = (String) this.verifyFields(beer.category, this.category);
+		this.alcoholContent = (String) this.verifyFields(beer.getAlcoholContent(), this.getAlcoholContent());
+	}
+	
+	private Object verifyFields(Object newField, Object field) {
+	   return newField == null ? field : newField;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
