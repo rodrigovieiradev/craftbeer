@@ -24,7 +24,7 @@ public class BeerDto {
 	@Size(max = 50, message = "Tamanho máximo excedido")
 	private String alcoholContent;
 	
-	@NotNull(message = "Campo price é Obrigatório")
+	@NotNull(message = "Campo price é obrigatório")
 	@DecimalMin(value = "0")
 	private BigDecimal price; 
 	
