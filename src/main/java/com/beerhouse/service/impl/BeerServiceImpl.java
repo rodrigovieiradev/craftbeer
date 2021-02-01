@@ -37,8 +37,7 @@ public class BeerServiceImpl implements BeerService{
 
 	@Override
 	public BeerDto getByBeer(Long beerId) {
-		return BeerDto.convertToDto(this.finById(beerId)
-				      .orElseThrow(() -> new NotFoundException("Beer not found")));
+		return BeerDto.convertToDto(this.validateFindById(this.finById(beerId)));
 	}
 
 	@Override
@@ -55,7 +54,7 @@ public class BeerServiceImpl implements BeerService{
 
 	@Override
 	public BeerDto alterBeer(Long beerId, BeerDto beerDto) {
-		 Beer beer = this.finById(beerId).orElseThrow(() -> new NotFoundException("Beer not found"));
+		 Beer beer = this.validateFindById(this.finById(beerId));
 		 beer.setBeerValues(beerDto.convertToEntity());
 		 return BeerDto.convertToDto(this.saveBeer(beer));
 	}
@@ -88,6 +87,10 @@ public class BeerServiceImpl implements BeerService{
 	@Transactional
 	private void deleteById(Long beerId) {
 		 beerRepository.delete(beerId);
+	}
+	
+	public Beer validateFindById(Optional<Beer> beerOptional) {
+		return beerOptional.orElseThrow(() -> new NotFoundException("Beer not found"));
 	}
 
 }
