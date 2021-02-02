@@ -1,3 +1,12 @@
+##Visão Geral 
+Para executar aplicação é necessário utiliza o comando: mvn spring-boot:run
+
+Visualização da API documentação no Swagger: 
+
+```bash
+    http://localhost:9000/beerhouse/swagger-ui.html#/
+```
+
 # Cadastro de cervejas artesanais
 
 O objetivo deste projeto é avaliar o desenvolvimento de uma aplicação java utilizando Spring e APIs.
