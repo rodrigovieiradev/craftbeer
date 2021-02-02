@@ -15,7 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.beerhouse.expcetion.NotFoundException;
+import com.beerhouse.exception.NotFoundException;
 import com.beerhouse.model.Beer;
 import com.beerhouse.service.impl.BeerServiceImpl;
 

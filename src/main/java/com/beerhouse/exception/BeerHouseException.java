@@ -1,4 +1,4 @@
-package com.beerhouse.expcetion;
+package com.beerhouse.exception;
 
 
 public class BeerHouseException extends RuntimeException {

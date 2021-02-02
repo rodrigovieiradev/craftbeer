@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.beerhouse.dto.BeerDto;
-import com.beerhouse.expcetion.NotFoundException;
+import com.beerhouse.exception.NotFoundException;
 import com.beerhouse.model.Beer;
 import com.beerhouse.repository.BeerRepository;
 import com.beerhouse.service.BeerService;
